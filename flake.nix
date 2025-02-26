@@ -13,17 +13,7 @@
       in {
         devShells.default = pkgs.mkShell {
           buildInputs = [
-            (pkgs.texlive.combine {
-              inherit (pkgs.texlive) scheme-medium;
-              extraPackages = [
-                pkgs.texlive.pgf       # Provides TikZ support
-                pkgs.texlive.pgfplots  # For plotting
-                pkgs.texlive.standalone
-                pkgs.texlive.luatex
-                pkgs.texlive.latexmk
-              ];
-            })
-            pkgs.pandoc
+            pkgs.texLiveFull
           ];
         };
       });
