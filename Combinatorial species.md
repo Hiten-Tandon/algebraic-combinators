@@ -2,8 +2,6 @@
 header-includes:
   - \usepackage{tikz}
   - \usetikzlibrary {positioning}
-  - \usepackage{xcolor}
-  - \usepackage{caption}
 ---
 # Combinatorial Species
 
