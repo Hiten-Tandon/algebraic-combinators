@@ -12,9 +12,15 @@
         pkgs = import nixpkgs { inherit system; };
       in {
         devShells.default = pkgs.mkShell {
-          buildInputs = [
-            pkgs.texliveFull
+          buildInputs = with pkgs; [
+            texlive.combined.scheme-full
+            tex-fmt
           ];
+
+          shellHook = ''
+            nu
+            exit
+          '';
         };
       });
 }

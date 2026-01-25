@@ -1,1 +1,4 @@
-*.err
+!flake.*
+!*.gitignore
+!*.pdf
+!*.tex
