@@ -47,24 +47,27 @@ Then, $f$ can be written in terms of $g$ as:
   \end{cases}
 \]
 
-This can be proven trivially by expanding the defintion of $g(x)$ in the above relation.
+This can be proven trivially by expanding the defintion of $g(x)$ in
+the above relation.
 
 Trivially,
 $$g(0) = \sum_{x \le 0} f(x) = f(0)$$
 and,
 $$g(x) - g(x - 1) = \sum_{y \le x} f(y) - \sum_{z \le x - 1} f(z) = f(x)$$
 
-Crucially, it doesn't matter, how $f$ and $g$ are defined independently of each other.
+Crucially, it doesn't matter, how $f$ and $g$ are defined
+independently of each other.
 Just because the relation of $g(x) = \sum\limits_{y \le x} f(y)$ exists,
-no matter how else they are originally defined (\S~\ref{sec:def}), we can go always go from computation of one to another
+no matter how else they are originally defined (\S~\ref{sec:def}), we
+can go always go from computation of one to another
 using the same construction.
-
 
 Also note that, this can be re-written as:
 $$f(x) = \sum_{y \le x} \mu(y, x) \cdot g(y)$$
 where we define $\mu : \bP \times \bP \longrightarrow \{-1, 0, 1\}$ as:
 \[
-  \mu(x, y) = \begin{cases}
+  \mu(x, y) =
+  \begin{cases}
     -1 & y = x + 1\\
     1 & y = x\\
     0 & otherwise.
@@ -72,9 +75,11 @@ where we define $\mu : \bP \times \bP \longrightarrow \{-1, 0, 1\}$ as:
 \]
 
 With this definition of $\mu$ I can now re-write the relation from above as:
-$$\boxed{\forall f, g \bP \longrightarrow \bC, f(x) = \sum\limits_{y \le x} g(y). g(x) = \sum\limits_{y \le x} \mu(y, x) \cdot f(y)}$$
+$$\boxed{\forall f, g \colon \bP \longrightarrow \bC, f(x) =
+\sum\limits_{y \le x} g(y). g(x) = \sum\limits_{y \le x} \mu(y, x) \cdot f(y)}$$
 
-Similarly, consider the example where $f, g\colon \bN \times \bN \longrightarrow \bC$ and,
+Similarly, consider the example where $f, g\colon \bN \times \bN
+\longrightarrow \bC$ and,
 $$g(x, y) = \sum_{z \le x} \sum_{w \le y} f(z, w)$$
 The relation can be re-written with $f$ in terms of $g$ as:
 \[
@@ -102,11 +107,12 @@ $$f(x, y) = \sum_{x' \le x}\sum_{y' \le y} \mu(x, y, x', y') \cdot g(x', y')$$
 
 Where this time we define $\mu : \bP^4 \longrightarrow \{-1, 0, 1\}$ as
 \[
-  \mu(x, y, x', y') = \begin{cases}
+  \mu(x, y, x', y') =
+  \begin{cases}
     0 & x' < x - 1 \text{ or } y' < y - 1\\
     -1 & x' = x - 1 \text { xor } y' = y - 1\\
     1 & otherwise.
-  \end{cases} 
+  \end{cases}
 \]
 
 You can take your time to verify the validity of this claim.\\
@@ -116,10 +122,11 @@ care about the definitions following any rules. Just this relation holding is\\
 enough to jump from one to other.
 
 \begin{tcolorbox}[colframe=red!50, title=Fun tidbit]
-If we call $\mu$ we defined in the first example $\mu_1$ and the one from the second example $\mu_2$
-Then observe that we can rewrite $\mu_2$ in terms of $\mu_1$ as
+  If we call $\mu$ we defined in the first example $\mu_1$ and the
+  one from the second example $\mu_2$
+  Then observe that we can rewrite $\mu_2$ in terms of $\mu_1$ as
 
-$$\mu_2(x, y, x', y') = \mu_1(x, x') \cdot \mu_1(y, y')$$
+  $$\mu_2(x, y, x', y') = \mu_1(x, x') \cdot \mu_1(y, y')$$
 \end{tcolorbox}
 
 Now for the most important example,
@@ -130,50 +137,15 @@ $$g(x) = \sum_{d | x} \mu(x, d) \cdot f(d)$$
 where $\mu : \bP^2 \longrightarrow \{-1, 0, 1\}$
 is defined as
 \[
- \mu(x, y) =
+  \mu(x, y) =
   \begin{cases}
-    (-1)^{n\left(p \in \text{Primes} \colon  p | \frac x y \right)} & \forall p \in \bP, p^2 \nmid \frac x y.\\
+    (-1)^{n\left(p \in \text{Primes} \colon  p | \frac x y \right)} &
+    \forall p \in \bP, p^2 \nmid \frac x y.\\
     0 & otherwise
-  \end{cases} 
+  \end{cases}
 \]
 
-\section{Formal definition and constraints of a M\"obius Function}\label{sec:def}
-\subsection{Partially Ordered Sets / Posets}
-
-A partially ordered set also known as a Poset is a pair of a set $P$ and a relation $\le \colon P^2$ s.t it staisfies:
-\begin{enumerate}
-\item $\forall x \in P. x \le x$ (Reflexivity)
-\item $\forall x, y, z \in P, x \le y, y \le z. x \le z.$ (Transitivity)
-\item $\forall x, y \in P, x \le y, y \le x. x = y.$ (Anti-symmetry)
-\end{enumerate}
-
-Common examples of Posets include
-\begin{enumerate}
-\item all subsets of $(\bC, \le)$
-\item $(\bP, \mid)$
-\item $\forall a, b \in \bZ. [a,b]$
-\item $\forall X: \text{Set}. (2^X, \subseteq)$
-\item $\left(\bR^2, \left\{(x, y), (x', y') \in \bR^2 \left| x \le x', y \le y'\right.\right\}\right)$
-\end{enumerate}
-
-\begin{tcolorbox}[colframe=blue!50, title=Chains and Anti-chains]
-A Poset $(P, \le)$ is called a chain if $\forall x, y \in P, x \le y \text{ or } y \le x$.
-Common examples of this would include $\bN, \bP, \bR$ and their subsets.
-\tcblower
-A Poset $(P, \le)$ is called an anti-chain if $\forall x, y \in P, x \le y \iff y \le x$.
-A common example of an antichain is \{German, French, Italian\}
-\end{tcolorbox}
-
-\subsection{Hasse Diagrams}
-A common way to represent a Poset is by using Hasse diagrams.
-A Hasse diagram is a graphical representation of a Poset where the following conditions are met:
-\begin{enumerate}
-\item Vertices of the graph represent an element of the poset $P$
-\item There is an edge from $x$ to $y$ if $x$ covers $y$.
-\end{enumerate}
-
-Cover here means the following:
-$\forall x, y \in P. \nexists z \in P, z \leq x, y \leq z, x \neq z, y \neq z.$
-Then $x$ is said to cover $y$.
+\section{Formal definition and constraints of a M\"obius
+Function}\label{sec:def}
 
 \end{document}
