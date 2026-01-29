@@ -353,4 +353,55 @@ Notice that\\
 Which simply means that, if we swap $w$ and $y$ on RHS it will be equivalent to the LHS.\\
 \end{proof}
 
+Let $\delta$ be a function in $A(P)$ such that
+
+\[
+  \delta(x, y) = \begin{cases}
+    1 & x = y\\
+    0 & otherwise.
+  \end{cases} 
+\]
+
+Then $\delta$ is the multiplicative unit of this algebra, i.e.
+
+$$\forall f \in A(P).~f*\delta = \delta*f = f.$$
+
+\subsubsection{Inversion of incidence algebras}
+
+\begin{theorem}
+A function $f$ in an incidence algebra $A(P)$ of a locally finite poset $P$, is *-invertible $\iff \forall x \in P.~f(x, x) \neq 0$
+\end{theorem}
+
+\begin{proof}
+First let's start by stating the condition of theorem clearly.\\
+$$\forall f \in A(P), \left(\forall x \in P.~f(x, x) \neq 0\right). \exists g \in A(P). f * g = g * f = \delta./$$
+Where the last condition, $f * g = g * f = \delta$ can means that $\forall x, y \in P. (f * g)(x, y) = (g * f)(x, y) = \delta(x, y)$\\
+To prove this let's look at this case by case:\\
+
+Case I: $x = y$
+$$(f * g)(x, x) = \sum_{x \le y \le x} f(x, y) \cdot g(y,x)$$
+$$\implies (f * g)(x, x) = f(x, x) \cdot g(x, x)$$
+Which means that for $g$ to be the inverse of $f$, this produce simply needs to equal 1 ($\because \delta(x, x) = 1$).\\
+Since we assume that $f(x, x) \neq 0$ we can say that, $g(x, x) = \frac 1 {f(x, x)}$
+
+Case II: $x < y$
+For $x < y$ let's expand the function
+$$(f * g)(x, y) = \sum_{x \leq z \leq y} f(x, z) \cdot g(z, y)$$
+For the first value of $z$, note that it is $f(x, x) \cdot g(x, y)$ which is the same as $\frac {g(x, y)} {g(x, x)}$.\\
+
+$\because$ to be an inverse $\forall x, y \in P, x < y. g(x, y) = 0$\\
+Using the above finding we can deduce that:\\
+$$g(x, y) = -g(x, x)\cdot \sum_{x < z \leq y} f(x, z) \cdot g(z, y)$$
+
+$\because$ this is a recursive relation, which only relies on the $[x, y]$ range being computable
+we can use this to inductively compute this relation on any locally finite Poset.
+
+In other words, since all the values on the RHS are defined independently of the LHS, we can say that
+we can go from the RHS to the LHS.
+\end{proof}
+
+
+\boxed{$$\forall f, g \in A(P), f(x, x) \neq 0, g(x, y) = -g(x, x)\cdot \sum\limits_{x < z \leq y} f(x, z) \cdot g(z, y).~f * g = g * f = \delta$$}
+
+Using the above relation we can calculate the inverse of any invertible function in $A(P)$, and it is also how we'll compute the M\"obius function.
 \end{document}
