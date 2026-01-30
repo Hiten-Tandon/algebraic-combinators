@@ -1,39 +1,4 @@
-\documentclass{article}
-
-\usepackage{amssymb,amsmath,tikz,tcolorbox}
-
-\usetikzlibrary{matrix,backgrounds,patterns,positioning}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{1em}
-
-\newcommand{\bN}{\mathbb{N}}
-\newcommand{\bP}{\mathbb{P}}
-\newcommand{\bZ}{\mathbb{Z}}
-\newcommand{\bQ}{\mathbb{Q}}
-\newcommand{\bR}{\mathbb{R}}
-\newcommand{\bC}{\mathbb{C}}
-\title{M\"obius Inversion}
-\author{Hiten Tandon}
-\date{}
-
-\begin{document}
-\maketitle
-
-\section{Notation}
-
-\begin{description}
-  \item[$\bN$]= Natural Numbers
-  \item[$\bP$]= Positive Integers
-  \item[$\bZ$]= Integers
-  \item[$\bR$]= Real Numbers
-  \item[$\bC$]= Complex Numbers
-  \item[R]= Commutative Unital RING
-  \item[{$[a, b]$}]= $\{x \in \bZ \left| a \le x \le b\right.\}$
-  \item[{$[a]$}]= $[1, a]$
-\end{description}
-
-\section{M\"obius Function}
+\chapter{M\"obius Function}
 
 Consider two functions $f, g \colon \bN \longrightarrow \bC$ such that
 $$g(x) = \sum\limits_{y \le x} f(y)$$
@@ -145,7 +110,29 @@ is defined as
   \end{cases}
 \]
 
-\section{Formal definition and constraints of a M\"obius
-Function}\label{sec:def}
+\section{Formal definition of the M\"obius Function}\label{sec:def}
 
-\end{document}
+
+Consider the function $\zeta: P \times P \to R$
+\[
+  \zeta(x, y) = \begin{cases}
+    1 & x \leq y\\
+    0 & o/w
+  \end{cases}
+\]
+
+Using the formula we found in \S~\ref{inverse-fn}, we can invert this function and we'll get
+
+\[
+  \zeta^{-1}(x, y) = \begin{cases}
+    1 & x = y\\
+    -\sum\limits_{x < z \leq y} \mu(x, z) & x < y\\
+    0 & o/w.
+  \end{cases} 
+\]
+
+Now, observe that $\forall f, g \in A(P) \text{ s.t. } f(x, z) = \sum\limits_{x \leq y \leq z} g(x, y)$
+where $P$ is a locally finite Poset. That relation can be written as $f = g * \zeta$. Given this, we can
+then say that $g = f * \zeta^{-1}$.
+
+Which means that $\zeta^{-1}$ is the general M\"obius function for all locally finite partially ordered sets.

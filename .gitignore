@@ -1,6 +1,2 @@
-!flake.*
-!*.gitignore
-!*.pdf
 !*.tex
-*.aux
-*.log
+!flake.*

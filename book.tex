@@ -1,0 +1,53 @@
+\documentclass[5pt]{book}
+\usepackage{amssymb,amsmath,amsthm,tikz,tcolorbox,extpfeil,makecell}
+
+\usetikzlibrary{matrix,backgrounds,patterns,positioning}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+\newcommand{\bN}{\mathbb{N}}
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bZ}{\mathbb{Z}}
+\newcommand{\bQ}{\mathbb{Q}}
+\newcommand{\bR}{\mathbb{R}}
+\newcommand{\bC}{\mathbb{C}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\bijection}{\xrightarrow{\sim}}
+\newcommand{\bijectivemap}[1]{\xmapsto[#1]{\sim}}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{Algebraic Combinatorics}
+\author{Hiten Tandon}
+\date{}
+
+\begin{document}
+\maketitle
+\section{Notation}
+
+\begin{description}
+  \item[$\bN$]= Natural Numbers
+  \item[$\bP$]= Positive Integers
+  \item[$\bZ$]= Integers
+  \item[$\bR$]= Real Numbers
+  \item[$\bC$]= Complex Numbers
+  \item[R]= Commutative Unital RING
+  \item[$\cP$]= Set of all Prime numbers
+  \item[{$[a, b]$}]= $\{x \in \bZ \left| a \le x \le b\right.\}$
+  \item[{$[a]$}]= $[1, a]$
+  \item[{$\bijection$}]= Used to represent a bijective function
+    (one-one mapping)
+  \item[{$\bijectivemap\phi$}]= Used to show the bijective mapping
+    under the function $\phi$
+  \item[$\hat0$]= Smallest element of the Poset
+  \item[$\hat1$]= Greatest element of the Poset
+  \item[$\le_X$]= less than or equal, in the poset $X$.
+  \item[$n(\dots)$]= cardinality of the expression in the parenths.
+\end{description}
+
+\include{poset.tex}
+\include{mobius_inversion.tex}
+\end{document}
